@@ -1,0 +1,20 @@
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#0a1628"/>
+  <rect x="50" y="50" width="800" height="450" rx="8" fill="#1a2a4a" stroke="#00d4ff" stroke-width="2"/>
+  <text x="450" y="120" font-family="system-ui" font-size="28" fill="#00d4ff" text-anchor="middle">⚽ EA SPORTS FC 26 @ 120 FPS</text>
+  <text x="450" y="170" font-family="system-ui" font-size="18" fill="#fff" text-anchor="middle">El Libertador Stadium - Day Match</text>
+  <rect x="150" y="220" width="250" height="120" rx="8" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" stroke-width="1"/>
+  <text x="275" y="260" font-family="system-ui" font-size="14" fill="#00d4ff" text-anchor="middle">📊 Performance Metrics</text>
+  <text x="275" y="290" font-family="system-ui" font-size="24" fill="#fff" text-anchor="middle">118 FPS</text>
+  <text x="275" y="315" font-family="system-ui" font-size="12" fill="#888" text-anchor="middle">p50: 8.3ms | p95: 9.4ms | 1% Low: 105 FPS</text>
+  <rect x="450" y="220" width="250" height="120" rx="8" fill="#22c55e" opacity="0.1" stroke="#22c55e" stroke-width="1"/>
+  <text x="575" y="260" font-family="system-ui" font-size="14" fill="#22c55e" text-anchor="middle">🎮 GPU</text>
+  <text x="575" y="290" font-family="system-ui" font-size="24" fill="#fff" text-anchor="middle">5.2 ms</text>
+  <text x="575" y="315" font-family="system-ui" font-size="12" fill="#888" text-anchor="middle">MetalFX: Off | Standard Upscaling</text>
+  <rect x="750" y="220" width="80" height="120" rx="8" fill="#f97316" opacity="0.1" stroke="#f97316" stroke-width="1"/>
+  <text x="790" y="260" font-family="system-ui" font-size="14" fill="#f97316" text-anchor="middle">⚡</text>
+  <text x="790" y="290" font-family="system-ui" font-size="24" fill="#fff" text-anchor="middle">2.4W</text>
+  <text x="790" y="315" font-family="system-ui" font-size="12" fill="#888" text-anchor="middle">CPU Power</text>
+  <text x="450" y="380" font-family="system-ui" font-size="14" fill="#4ade80" text-anchor="middle">✅ 0-2 frames dropped per 300 | Smooth 120 Hz gameplay</text>
+  <text x="450" y="520" font-family="system-ui" font-size="12" fill="#666" text-anchor="middle">MacBook Pro M1 Pro 16GB | macOS 14 | Battery | ProMotion 120Hz</text>
+</svg>

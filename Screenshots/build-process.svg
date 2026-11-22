@@ -1,0 +1,21 @@
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#1e1e1e"/>
+  <text x="450" y="80" font-family="system-ui" font-size="24" fill="#fff" text-anchor="middle">FC 26 Launcher - Build Process</text>
+  <rect x="50" y="120" width="800" height="120" rx="12" fill="#2d2d2d" stroke="#444" stroke-width="1"/>
+  <text x="100" y="160" font-family="system-ui" font-size="16" fill="#fff">Build Options</text>
+  <text x="100" y="200" font-family="system-ui" font-size="14" fill="#fff">☑ Enable 120 FPS Mod  (Applies patch from nxnative before building)</text>
+  <rect x="50" y="260" width="800" height="280" rx="12" fill="#2d2d2d" stroke="#444" stroke-width="1"/>
+  <text x="100" y="300" font-family="system-ui" font-size="16" fill="#fff">Build Log</text>
+  <text x="100" y="335" font-family="system-ui" font-size="12" fill="#888" font-family="monospace">=== Running pack_app.py ===</text>
+  <text x="100" y="355" font-family="system-ui" font-size="12" fill="#888" font-family="monospace">step: launcher and host (clones of the game files)</text>
+  <text x="100" y="375" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">step: shader libraries</text>
+  <text x="100" y="395" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">step: add-on content</text>
+  <text x="100" y="415" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">step: pipeline archive</text>
+  <text x="100" y="435" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">step: game files</text>
+  <text x="100" y="455" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">step: icon</text>
+  <text x="100" y="475" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">step: signing (ad-hoc)</text>
+  <text x="100" y="495" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">✅ Build completed successfully!</text>
+  <text x="100" y="515" font-family="system-ui" font-size="12" fill="#4ade80" font-family="monospace">App location: ~/Library/Application Support/FC26Launcher/Apps/EA-Sports-FC-26.app</text>
+  <rect x="300" y="500" width="300" height="40" rx="8" fill="#22c55e"/>
+  <text x="450" y="526" font-family="system-ui" font-size="16" fill="#fff" text-anchor="middle">✅ Done</text>
+</svg>

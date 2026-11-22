@@ -1,0 +1,16 @@
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#1e1e1e"/>
+  <text x="450" y="80" font-family="system-ui" font-size="24" fill="#fff" text-anchor="middle">FC 26 Launcher - 120 FPS Mod</text>
+  <rect x="50" y="120" width="800" height="200" rx="12" fill="#2d2d2d" stroke="#f97316" stroke-width="2"/>
+  <text x="100" y="170" font-family="system-ui" font-size="28" fill="#f97316">⚡ 120 FPS Mod</text>
+  <text x="100" y="210" font-family="system-ui" font-size="16" fill="#fff">Enable 120 FPS gameplay on supported displays</text>
+  <rect x="700" y="150" width="80" height="40" rx="20" fill="#22c55e"/>
+  <circle cx="760" cy="170" r="16" fill="#fff"/>
+  <text x="450" y="260" font-family="system-ui" font-size="14" fill="#4ade80" text-anchor="middle">✅ 120 FPS will be enabled on next build</text>
+  <rect x="50" y="350" width="800" height="200" rx="12" fill="#2d2d2d" stroke="#444" stroke-width="1"/>
+  <text x="100" y="390" font-family="system-ui" font-size="16" fill="#fff">Requirements:</text>
+  <text x="120" y="430" font-family="system-ui" font-size="14" fill="#aaa">• ProMotion display (120 Hz) - MacBook Pro 14"/16" 2021+</text>
+  <text x="120" y="460" font-family="system-ui" font-size="14" fill="#aaa">• 120 FPS patch applied during build (auto)</text>
+  <text x="120" y="490" font-family="system-ui" font-size="14" fill="#aaa">• Game rebuild after enabling</text>
+  <text x="120" y="520" font-family="system-ui" font-size="14" fill="#aaa">• Standard upscaling recommended (saves 1.8ms GPU)</text>
+</svg>

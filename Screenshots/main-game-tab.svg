@@ -1,0 +1,14 @@
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#1e1e1e"/>
+  <text x="450" y="80" font-family="system-ui" font-size="24" fill="#fff" text-anchor="middle">FC 26 Launcher - Game Tab</text>
+  <rect x="50" y="120" width="800" height="400" rx="12" fill="#2d2d2d" stroke="#444" stroke-width="1"/>
+  <text x="450" y="160" font-family="system-ui" font-size="18" fill="#fff" text-anchor="middle">🎮 EA SPORTS FC 26 - Switch Recompiled for Mac</text>
+  <text x="450" y="200" font-family="system-ui" font-size="14" fill="#888" text-anchor="middle">Build Folder: ~/Documents/NSP GAMES/FC 26/01004FF021942000_build/</text>
+  <text x="450" y="240" font-family="system-ui" font-size="14" fill="#4ade80" text-anchor="middle">✅ Build folder valid - All required files found</text>
+  <rect x="150" y="280" width="600" height="120" rx="8" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+  <text x="450" y="310" font-family="system-ui" font-size="14" fill="#fff" text-anchor="middle">📦 Built App Detected</text>
+  <text x="450" y="340" font-family="system-ui" font-size="12" fill="#888" text-anchor="middle">~/Library/Application Support/FC26Launcher/Apps/EA-Sports-FC-26.app</text>
+  <rect x="300" y="420" width="300" height="50" rx="8" fill="#007aff" stroke="none"/>
+  <text x="450" y="452" font-family="system-ui" font-size="16" fill="#fff" text-anchor="middle">▶ Launch Game</text>
+  <text x="450" y="520" font-family="system-ui" font-size="12" fill="#666" text-anchor="middle">Sidebar: Game | Settings | Mods | About</text>
+</svg>

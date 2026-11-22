@@ -1,0 +1,15 @@
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="600" fill="#1e1e1e"/>
+  <text x="450" y="80" font-family="system-ui" font-size="24" fill="#fff" text-anchor="middle">FC 26 Launcher - Settings Panel</text>
+  <rect x="50" y="120" width="800" height="400" rx="12" fill="#2d2d2d" stroke="#444" stroke-width="1"/>
+  <text x="100" y="160" font-family="system-ui" font-size="16" fill="#fff">☑ Show settings window at launch</text>
+  <text x="100" y="210" font-family="system-ui" font-size="16" fill="#fff">🎮 Game Settings</text>
+  <text x="120" y="250" font-family="system-ui" font-size="14" fill="#fff">Frame Rate: ▼ [60 fps ▼] 30/60</text>
+  <text x="120" y="285" font-family="system-ui" font-size="14" fill="#fff">Console Mode: ▼ [Docked ▼] Docked/Handheld</text>
+  <text x="120" y="320" font-family="system-ui" font-size="14" fill="#fff">Upscaling: ▼ [Standard ▼] Standard/MetalFX</text>
+  <text x="120" y="355" font-family="system-ui" font-size="14" fill="#fff">Game Language: ▼ [British English ▼] 13 languages</text>
+  <text x="120" y="390" font-family="system-ui" font-size="14" fill="#fff">Display Mode: ▼ [Window ▼] Window/Fullscreen</text>
+  <text x="100" y="430" font-family="system-ui" font-size="16" fill="#fff">🎯 Controls</text>
+  <text x="120" y="470" font-family="system-ui" font-size="14" fill="#fff">☑ Game Rumble | Strength: [====----] 1.0 | Cutoff: [--] 0.0</text>
+  <text x="100" y="510" font-family="system-ui" font-size="14" fill="#666">▼ Advanced Settings (Performance, etc.)</text>
+</svg>
