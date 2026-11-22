@@ -1,0 +1,36 @@
+{
+  "" : {
+    "const-values" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary.swiftconstvalues",
+    "dependencies" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary.d",
+    "diagnostics" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary.dia",
+    "emit-module-dependencies" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary-emit-module.dia",
+    "pch" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary.swiftdeps"
+  },
+  "/Users/faycalelhandi/FC26Launcher/Sources/FC26Launcher/Models/BuildManager.swift" : {
+    "index-unit-output-path" : "/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/BuildManager.o",
+    "llvm-bc" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/BuildManager.bc",
+    "object" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/BuildManager.o"
+  },
+  "/Users/faycalelhandi/FC26Launcher/Sources/FC26Launcher/Models/GameManager.swift" : {
+    "index-unit-output-path" : "/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/GameManager.o",
+    "llvm-bc" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/GameManager.bc",
+    "object" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/GameManager.o"
+  },
+  "/Users/faycalelhandi/FC26Launcher/Sources/FC26Launcher/Models/SettingsManager.swift" : {
+    "index-unit-output-path" : "/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/SettingsManager.o",
+    "llvm-bc" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/SettingsManager.bc",
+    "object" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/SettingsManager.o"
+  },
+  "/Users/faycalelhandi/FC26Launcher/Sources/FC26Launcher/Views/ContentView.swift" : {
+    "index-unit-output-path" : "/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/faycalelhandi/FC26Launcher/Sources/FC26Launcher/main.swift" : {
+    "index-unit-output-path" : "/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/main.o",
+    "llvm-bc" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/main.bc",
+    "object" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/main.o"
+  }
+}

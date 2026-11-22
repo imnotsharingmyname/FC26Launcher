@@ -1,0 +1,11 @@
+{
+  "/Users/faycalelhandi/FC26Launcher/Sources/FC26Launcher/Models/BuildManager.swift" : {
+    "abi-baseline-json" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher.abi.json",
+    "const-values" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary.swiftconstvalues",
+    "dependencies" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary.d",
+    "diagnostics" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher-primary.dia",
+    "swiftdoc" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher.swiftdoc",
+    "swiftmodule" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher.swiftmodule",
+    "swiftsourceinfo" : "/Users/faycalelhandi/FC26Launcher/.build/out/Intermediates.noindex/FC26Launcher.build/Release/FC26Launcher-p.build/Objects-normal/arm64/FC26Launcher.swiftsourceinfo"
+  }
+}
