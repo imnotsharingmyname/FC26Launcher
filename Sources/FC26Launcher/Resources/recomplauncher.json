@@ -281,6 +281,35 @@
       }
     ]
   },
+  "achievements": {
+    "platform": "recomplauncher",
+    "status": "unsupported",
+    "note": "Requires nxnative achievement API + RecompLauncher platform SDK. Switch version may have internal achievements but not exposed."
+  },
+  "dumps": {
+    "format": "nxnative-build",
+    "titleId": "01004FF021942000",
+    "name": "EA SPORTS FC 26",
+    "region": "World",
+    "version": "1.86.1233",
+    "buildId": "v1179648",
+    "notes": "Custom nxnative build directory structure. Verify by checking required files in build folder.",
+    "verification": {
+      "requiredFiles": [
+        "patched_v1179648/main.patched.bin",
+        "extract/v1179648/RomFS.img",
+        "shader/pkg/",
+        "font/nintendo_ext.ttf",
+        "tools/dmhost",
+        "app/launcher.json"
+      ]
+    }
+  },
+  "controllers": {
+    "support": ["gamecontroller", "sdl"],
+    "default": "gamecontroller",
+    "note": "Uses Apple GameController.framework natively. SDL2 mapping supported for Steam/Proton compatibility."
+  },
   "tags": ["sports", "football", "soccer", "ea-sports", "switch-recomp", "nxnative"],
   "credits": [
     { "name": "seedds", "role": "nxnative author", "url": "https://github.com/seedds/nxnative" },
