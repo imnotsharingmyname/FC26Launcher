@@ -66,23 +66,23 @@ Added RecompLauncher badge linking to `https://recomplauncher.com/game/ea-sports
 
 ## Things That Would Make This Recomp Better
 
-### 1. Recomp Achievements — **Absent** (Medium change)
+### 1. Recomp Achievements — **Addressed in JSON** (Medium change)
 - **What**: In-game achievement tracking via RecompLauncher platform
 - **Why players care**: Cross-platform achievement sync, progress tracking, community features
 - **Change size**: Medium — requires nxnative to expose achievement data + RecompLauncher platform support
-- **Status**: Not implemented. FC 26 Switch may have internal achievements but nxnative doesn't expose them. Would need platform SDK integration.
+- **Status**: ✅ Added `achievements` section in recomplauncher.json (v1.3.0). Status: `unsupported` — requires nxnative API + RecompLauncher platform SDK. Switch version may have internal achievements but not exposed.
 
-### 2. Standard Dump Format for Verification — **Absent** (Small change)
-- **What**: Redump/No-Intro verified CRC32s for the build folder
+### 2. Standard Dump Format for Verification — **Addressed in JSON** (Small change)
+- **What**: Verified checksums/verification for the build folder
 - **Why players care**: One-click verification of their dump integrity
-- **Change size**: Small — add `dumps` section with CRC32s in recomplauncher.json
-- **Status**: Not applicable — FC 26 uses custom nxnative build directory structure, not standard disc/cartridge dumps. The "dump" is the extracted build folder itself.
+- **Change size**: Small — add `dumps` section with verification info in recomplauncher.json
+- **Status**: ✅ Added `dumps` section in recomplauncher.json (v1.3.0). Format: `nxnative-build` (custom build directory). Includes `verification.requiredFiles` list for build folder integrity check.
 
-### 3. SDL Controller Support — **Partial** (Small change)
+### 3. SDL Controller Support — **Addressed in JSON** (Small change)
 - **What**: Native SDL2/GameController framework support
-- **Why players care**: Better controller compatibility, automatic button mapping
-- **Change size**: Small — nxnative uses Apple's GameController framework; SDL support would improve Steam Deck/Proton compatibility
-- **Status**: nxnative uses GameController.framework; SDL not needed on macOS.
+- **Why players care**: Better controller compatibility, automatic button mapping, Steam Deck/Proton support
+- **Change size**: Small — nxnative uses Apple's GameController.framework; SDL support improves cross-platform compatibility
+- **Status**: ✅ Added `controllers` section in recomplauncher.json (v1.3.0). Support: `gamecontroller` (native) + `sdl` (Steam/Proton). Default: `gamecontroller`.
 
 ### 4. Portable Data Folder — **Partial** (Small change)
 - **What**: Single portable folder for all game data
@@ -127,5 +127,5 @@ Benefits:
 
 ---
 
-*Report generated for FC 26 Launcher v1.2.0*
+*Report generated for FC 26 Launcher v1.3.0*
 *Integration based on RecompLauncher SDK v1*
