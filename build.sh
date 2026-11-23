@@ -33,6 +33,11 @@ cp "$PROJECT_DIR/Sources/FC26Launcher/Resources/Info.plist" "$APP_BUNDLE/Content
 # Create PkgInfo
 echo "APPL????" > "$APP_BUNDLE/Contents/PkgInfo"
 
+# Copy recomplauncher.json to app bundle (for RecompLauncher support)
+cp "$PROJECT_DIR/Sources/FC26Launcher/Resources/recomplauncher.json" "$APP_BUNDLE/Contents/Resources/recomplauncher.json"
+# Also copy to app bundle root for zip distribution
+cp "$PROJECT_DIR/Sources/FC26Launcher/Resources/recomplauncher.json" "$APP_BUNDLE/recomplauncher.json"
+
 # Create app icon from the game's icon if available, otherwise create a placeholder
 ICON_SOURCE="/Users/faycalelhandi/Documents/NSP GAMES/FC 26/01004FF021942000_build/extract/v1179648/icon.jpg"
 if [ -f "$ICON_SOURCE" ]; then

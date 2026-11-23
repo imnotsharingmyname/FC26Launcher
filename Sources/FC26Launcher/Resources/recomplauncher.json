@@ -1,0 +1,233 @@
+{
+  "$schema": "https://recomplauncher.com/schema/recomplauncher-schema.json",
+  "id": "ea-sports-fc-26",
+  "name": "EA SPORTS FC 26",
+  "version": "1.86.1233",
+  "platform": "macos",
+  "description": "EA SPORTS FC 26 (Switch) recompiled for macOS via nxnative",
+  "website": "https://github.com/seedds/nxnative",
+  "repository": "https://github.com/seedds/nxnative",
+  "levels": {
+    "easy-setup": {
+      "game": {
+        "titleId": "01004FF021942000",
+        "name": "EA SPORTS FC 26",
+        "region": "World",
+        "inputs": {
+          "build-folder": {
+            "type": "directory",
+            "label": "Build Folder (01004FF021942000_build)",
+            "description": "Select the extracted build folder containing patched_v1179648, extract/, shader/, font/, tools/dmhost, and app/launcher.json",
+            "requiredFiles": [
+              "patched_v1179648/main.patched.bin",
+              "extract/v1179648/RomFS.img",
+              "shader/pkg/",
+              "font/nintendo_ext.ttf",
+              "tools/dmhost",
+              "app/launcher.json"
+            ]
+          }
+        },
+        "executable": {
+          "relativePath": "Contents/MacOS/nxnative",
+          "args": [],
+          "env": {
+            "DM_GAME": "01004FF021942000"
+          }
+        }
+      }
+    },
+    "settings": {
+      "config": {
+        "type": "file",
+        "path": "Resources/dm/launcher.json",
+        "format": "launcher-json",
+        "description": "Game settings from nxnative launcher.json"
+      },
+      "settings": [
+        {
+          "id": "DM_FPS_TARGET",
+          "label": "Frame Rate",
+          "type": "choice",
+          "default": "60",
+          "options": [
+            { "value": "30", "label": "30 FPS" },
+            { "value": "60", "label": "60 FPS" },
+            { "value": "120", "label": "120 FPS (requires ProMotion display)" }
+          ],
+          "section": "Game",
+          "description": "Target frame rate. 120 FPS requires a 120 Hz ProMotion display and the 120 FPS patch."
+        },
+        {
+          "id": "DM_OPMODE",
+          "label": "Console Mode",
+          "type": "choice",
+          "default": "1",
+          "options": [
+            { "value": "1", "label": "Docked" },
+            { "value": "0", "label": "Handheld" }
+          ],
+          "section": "Game",
+          "description": "Simulate docked or handheld mode"
+        },
+        {
+          "id": "DM_PRESENT_UPSCALE",
+          "label": "Upscaling",
+          "type": "choice",
+          "default": "off",
+          "options": [
+            { "value": "off", "label": "Standard" },
+            { "value": "metalfx", "label": "MetalFX" }
+          ],
+          "section": "Game",
+          "description": "MetalFX upscaling uses more GPU time and can increase heat"
+        },
+        {
+          "id": "DM_LANG",
+          "label": "Game Language",
+          "type": "choice",
+          "default": "en-GB",
+          "options": [
+            { "value": "en-GB", "label": "British English" },
+            { "value": "ja", "label": "Japanese" },
+            { "value": "fr", "label": "French" },
+            { "value": "de", "label": "German" },
+            { "value": "es-419", "label": "Latin American Spanish" },
+            { "value": "es", "label": "Spanish" },
+            { "value": "it", "label": "Italian" },
+            { "value": "nl", "label": "Dutch" },
+            { "value": "pt", "label": "Portuguese" },
+            { "value": "ru", "label": "Russian" },
+            { "value": "ko", "label": "Korean" },
+            { "value": "zh-Hant", "label": "Traditional Chinese" },
+            { "value": "zh-Hans", "label": "Simplified Chinese" },
+            { "value": "pt-BR", "label": "Brazilian Portuguese" }
+          ],
+          "section": "Game",
+          "description": "Game UI language"
+        },
+        {
+          "id": "DM_FULLSCREEN",
+          "label": "Display Mode",
+          "type": "choice",
+          "default": "0",
+          "options": [
+            { "value": "0", "label": "Window" },
+            { "value": "1", "label": "Fullscreen" }
+          ],
+          "section": "Game",
+          "description": "Run in windowed or fullscreen mode"
+        },
+        {
+          "id": "DM_RUMBLE",
+          "label": "Game Rumble",
+          "type": "toggle",
+          "default": true,
+          "section": "Controls",
+          "description": "Enable controller rumble"
+        },
+        {
+          "id": "DM_RUMBLE_GAIN",
+          "label": "Rumble Strength",
+          "type": "range",
+          "default": 1.0,
+          "min": 0.0,
+          "max": 3.0,
+          "step": 0.1,
+          "section": "Controls",
+          "description": "Rumble intensity multiplier",
+          "condition": "DM_RUMBLE=1"
+        },
+        {
+          "id": "DM_RUMBLE_MIN",
+          "label": "Rumble Cutoff",
+          "type": "range",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 0.9,
+          "step": 0.05,
+          "section": "Controls",
+          "description": "Minimum rumble threshold"
+        },
+        {
+          "id": "DM_PRESENT_SNAP",
+          "label": "Frame Buffering",
+          "type": "toggle",
+          "default": false,
+          "section": "Performance",
+          "description": "Up to one frame more display latency"
+        },
+        {
+          "id": "DM_PSO_MTL4",
+          "label": "Metal 4 Pipelines",
+          "type": "toggle",
+          "default": true,
+          "section": "Performance",
+          "description": "Keeps a pipeline archive; uses more memory"
+        },
+        {
+          "id": "DM_PSO_PREBUILD",
+          "label": "Pipeline Prebuild",
+          "type": "toggle",
+          "default": true,
+          "section": "Performance",
+          "description": "The first start waits a few minutes for it, once",
+          "condition": "DM_PSO_MTL4=1"
+        },
+        {
+          "id": "DM_NVN_ENC_THREAD",
+          "label": "Encode Thread",
+          "type": "toggle",
+          "default": false,
+          "section": "Performance",
+          "description": "Use separate encode thread"
+        },
+        {
+          "id": "DM_FPS_HOLD",
+          "label": "Hold Frames When Late",
+          "type": "toggle",
+          "default": true,
+          "section": "Performance",
+          "description": "Hold frames when rendering is late"
+        },
+        {
+          "id": "DM_METAL_HUD",
+          "label": "Performance HUD",
+          "type": "toggle",
+          "default": false,
+          "section": "Performance",
+          "description": "Show Metal performance HUD"
+        }
+      ]
+    },
+    "prepare": {
+      "executable": "Contents/MacOS/nxnative",
+      "args": ["--prepare"],
+      "description": "Validates build folder and prepares game data",
+      "progressPatterns": [
+        { "pattern": "Validating build folder", "progress": 0.1, "message": "Checking required files..." },
+        { "pattern": "Applying 120 FPS patch", "progress": 0.3, "message": "Applying patches..." },
+        { "pattern": "Building game app", "progress": 0.5, "message": "Compiling with pack_app.py..." },
+        { "pattern": "Signing", "progress": 0.9, "message": "Code signing..." },
+        { "pattern": "Build completed", "progress": 1.0, "message": "Ready to play!" }
+      ]
+    }
+  },
+  "dumps": {
+    "titleId": "01004FF021942000",
+    "name": "EA SPORTS FC 26",
+    "region": "World",
+    "version": "1.86.1233",
+    "notes": "Switch version recompiled for macOS via nxnative. Requires build folder from nxnative extraction process. No standard dump format - uses custom build directory structure."
+  },
+  "requirements": {
+    "os": "macOS 14.0+",
+    "arch": "arm64",
+    "notes": "Apple Silicon Mac required (M1/M2/M3). ProMotion display (120 Hz) recommended for 120 FPS mode."
+  },
+  "tags": ["sports", "football", "soccer", "ea-sports", "switch-recomp", "nxnative"],
+  "credits": [
+    { "name": "seedds", "role": "nxnative author", "url": "https://github.com/seedds/nxnative" },
+    { "name": "jhaizhou-ops", "role": "d2r-mobile (native execution approach)", "url": "https://github.com/jhaizhou-ops/d2r-mobile" }
+  ]
+}

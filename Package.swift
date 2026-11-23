@@ -14,7 +14,7 @@ let package = Package(
         .executableTarget(
             name: "FC26Launcher",
             path: "Sources/FC26Launcher",
-            exclude: ["Resources/Info.plist"],
+            exclude: ["Resources/Info.plist", "Resources/recomplauncher.json"],
             linkerSettings: [
                 .linkedFramework("AppKit"),
                 .linkedFramework("SwiftUI"),

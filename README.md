@@ -1,8 +1,20 @@
 # FC 26 Launcher for macOS
 
+[![RecompLauncher](https://img.shields.io/badge/RecompLauncher-supported-brightgreen?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnptMCAxOGMtNC40MSAwLTgtMy41OS04LThzMy41OS04IDgtOCA4IDMuNTkgOCA4LTMuNTkgOC04IDh6bTAtMTRjLTMuMzEgMC02IDIuNjktNiA2czIuNjkgNiA2IDYgNi0yLjY5IDYtNi0yLjY5LTYtNnoiLz48L3N2Zz4=)](https://recomplauncher.com/game/ea-sports-fc-26)
+
 A modern, native macOS launcher for **EA SPORTS FC 26** (Switch version recompiled to run natively on Apple Silicon).
 
 Built on top of [nxnative](https://github.com/seedds/nxnative) by seedds.
+
+## RecompLauncher Support
+
+This launcher includes full [RecompLauncher](https://recomplauncher.com) integration:
+
+- **Easy Setup**: Select your build folder and launch
+- **Settings Panel**: All game settings exposed in the launcher UI
+- **Preparation & Verification**: Validates build folder and prepares game data with progress reporting
+
+The `recomplauncher.json` is included in the app bundle at `Contents/Resources/recomplauncher.json` and at the app root for distribution.
 
 ## Features
 
