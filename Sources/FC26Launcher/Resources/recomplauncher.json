@@ -1,318 +1,337 @@
 {
+  "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
   "format": 1,
-  "id": "ea-sports-fc-26",
   "name": "EA SPORTS FC 26",
-  "version": "1.86.1233",
-  "platform": "macos",
-  "description": "EA SPORTS FC 26 (Switch) recompiled for macOS via nxnative",
-  "website": "https://github.com/seedds/nxnative",
-  "repository": "https://github.com/seedds/nxnative",
-  "inputs": {
-    "build-folder": {
-      "id": "build-folder",
-      "label": "Build Folder (01004FF021942000_build)",
+  "repo": "imnotsharingmyname/FC26Launcher",
+  "inputs": [
+    {
+      "id": "game",
+      "label": "Your EA SPORTS FC 26 Switch base game (.nsp or .xci)",
       "role": "game",
-      "format": "directory",
-      "description": "Select the extracted build folder containing patched_v1179648, extract/, shader/, font/, tools/dmhost, and app/launcher.json",
-      "requiredFiles": [
-        "patched_v1179648/main.patched.bin",
-        "extract/v1179648/RomFS.img",
-        "shader/pkg/",
-        "font/nintendo_ext.ttf",
-        "tools/dmhost",
-        "app/launcher.json"
+      "formats": [
+        {
+          "type": "file",
+          "extensions": [
+            "nsp",
+            "xci"
+          ]
+        }
       ]
+    },
+    {
+      "id": "update",
+      "label": "Your FC 26 1.86.1233 update (v1179648, .nsp)",
+      "role": "update",
+      "formats": [
+        {
+          "type": "file",
+          "extensions": [
+            "nsp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "keys",
+      "label": "Your Nintendo Switch prod.keys",
+      "role": "key",
+      "shared": "switch.prod-keys"
     }
-  },
+  ],
   "start": {
-    "program": "Contents/MacOS/nxnative",
-    "args": [],
-    "env": {
-      "DM_GAME": "01004FF021942000"
-    }
+    "program": [
+      "FC 26 Launcher.app/Contents/MacOS/FC26Launcher"
+    ],
+    "args": [
+      "--play"
+    ]
   },
   "prepare": {
-    "program": "Contents/MacOS/nxnative",
-    "args": ["--prepare"],
-    "description": "Validates build folder and prepares game data",
-    "options": [
+    "program": [
+      "FC 26 Launcher.app/Contents/MacOS/FC26Launcher"
+    ],
+    "args": [
+      "--prepare",
+      "--game={input:game}",
+      "--update={input:update}",
+      "--keys={input:keys}"
+    ],
+    "label": "Checking and building EA SPORTS FC 26",
+    "done": [
+      "{data}/prepared",
+      "{data}/EA-Sports-FC-26.app/Contents/MacOS/nxnative",
+      "{data}/EA-Sports-FC-26.app/Contents/MacOS/dmhost",
+      "{data}/EA-Sports-FC-26.app/Contents/Resources/romfs.img",
+      "{data}/EA-Sports-FC-26.app/Contents/Resources/dm/launcher.json"
+    ]
+  },
+  "config": [
+    {
+      "format": "json",
+      "file": [
+        {
+          "path": "{data}/settings.json"
+        }
+      ]
+    }
+  ],
+  "saves": [
+    "{data}/saves",
+    "{data}/settings.json"
+  ],
+  "folders": {
+    "saves": [
       {
-        "id": "apply-120fps-patch",
-        "label": "Apply 120 FPS patch",
-        "description": "Enables 120 FPS on ProMotion displays (requires rebuild)",
-        "default": false
+        "path": "{data}/saves"
       }
     ],
-    "done": ["Resources/dm/launcher.json"],
-    "keeps_copy": false
-  },
-  "config": {
-    "files": [
+    "logs": [
       {
-        "path": "Resources/dm/launcher.json",
-        "format": "json",
-        "ensure": {
-          "DM_GAME": "01004FF021942000"
-        }
+        "path": "{data}/runtime-home/Library/Logs/nxnative"
+      }
+    ],
+    "build_logs": [
+      {
+        "path": "{data}/cache/build/logs"
       }
     ]
+  },
+  "system": {
+    "macos": {
+      "version": "26.6"
+    }
   },
   "settings": [
     {
       "id": "DM_FPS_TARGET",
-      "label": "Frame Rate",
-      "type": "choice",
-      "default": "60",
-      "options": [
-        { "value": "30", "label": "30 FPS" },
-        { "value": "60", "label": "60 FPS" },
-        { "value": "120", "label": "120 FPS (requires ProMotion display)" }
-      ],
+      "label": "Frame rate",
       "group": "Game",
-      "description": "Target frame rate. 120 FPS requires a 120 Hz ProMotion display and the 120 FPS patch.",
-      "when": {}
+      "help": "30 FPS is the original console rate. Use a 120 Hz display for 120 FPS.",
+      "defaults": {
+        "DM_FPS_TARGET": "\"60\""
+      },
+      "choices": [
+        {"label": "30 fps", "set": {"DM_FPS_TARGET": "\"30\""}},
+        {"label": "60 fps", "set": {"DM_FPS_TARGET": "\"60\""}},
+        {"label": "120 fps", "set": {"DM_FPS_TARGET": "\"120\""}}
+      ]
     },
     {
       "id": "DM_OPMODE",
-      "label": "Console Mode",
-      "type": "choice",
-      "default": "1",
-      "options": [
-        { "value": "1", "label": "Docked" },
-        { "value": "0", "label": "Handheld" }
-      ],
+      "label": "Console mode",
       "group": "Game",
-      "description": "Simulate docked or handheld mode"
+      "help": "Simulate docked or handheld mode",
+      "defaults": {
+        "DM_OPMODE": "\"1\""
+      },
+      "choices": [
+        {"label": "Docked", "set": {"DM_OPMODE": "\"1\""}},
+        {"label": "Handheld", "set": {"DM_OPMODE": "\"0\""}}
+      ]
     },
     {
       "id": "DM_PRESENT_UPSCALE",
       "label": "Upscaling",
-      "type": "choice",
-      "default": "off",
-      "options": [
-        { "value": "off", "label": "Standard" },
-        { "value": "metalfx", "label": "MetalFX" }
-      ],
       "group": "Game",
-      "description": "MetalFX upscaling uses more GPU time and can increase heat"
+      "help": "MetalFX upscaling uses more GPU time and can increase heat",
+      "defaults": {
+        "DM_PRESENT_UPSCALE": "\"off\""
+      },
+      "choices": [
+        {"label": "Standard", "set": {"DM_PRESENT_UPSCALE": "\"off\""}},
+        {"label": "MetalFX", "set": {"DM_PRESENT_UPSCALE": "\"metalfx\""}}
+      ]
     },
     {
       "id": "DM_LANG",
-      "label": "Game Language",
-      "type": "choice",
-      "default": "en-GB",
-      "options": [
-        { "value": "en-GB", "label": "British English" },
-        { "value": "ja", "label": "Japanese" },
-        { "value": "fr", "label": "French" },
-        { "value": "de", "label": "German" },
-        { "value": "es-419", "label": "Latin American Spanish" },
-        { "value": "es", "label": "Spanish" },
-        { "value": "it", "label": "Italian" },
-        { "value": "nl", "label": "Dutch" },
-        { "value": "pt", "label": "Portuguese" },
-        { "value": "ru", "label": "Russian" },
-        { "value": "ko", "label": "Korean" },
-        { "value": "zh-Hant", "label": "Traditional Chinese" },
-        { "value": "zh-Hans", "label": "Simplified Chinese" },
-        { "value": "pt-BR", "label": "Brazilian Portuguese" }
-      ],
+      "label": "Game language",
       "group": "Game",
-      "description": "Game UI language"
+      "help": "Game UI language",
+      "defaults": {
+        "DM_LANG": "\"en-GB\""
+      },
+      "choices": [
+        {"label": "British English", "set": {"DM_LANG": "\"en-GB\""}},
+        {"label": "Japanese", "set": {"DM_LANG": "\"ja\""}},
+        {"label": "French", "set": {"DM_LANG": "\"fr\""}},
+        {"label": "German", "set": {"DM_LANG": "\"de\""}},
+        {"label": "Latin American Spanish", "set": {"DM_LANG": "\"es-419\""}},
+        {"label": "Spanish", "set": {"DM_LANG": "\"es\""}},
+        {"label": "Italian", "set": {"DM_LANG": "\"it\""}},
+        {"label": "Dutch", "set": {"DM_LANG": "\"nl\""}},
+        {"label": "Portuguese", "set": {"DM_LANG": "\"pt\""}},
+        {"label": "Russian", "set": {"DM_LANG": "\"ru\""}},
+        {"label": "Korean", "set": {"DM_LANG": "\"ko\""}},
+        {"label": "Traditional Chinese", "set": {"DM_LANG": "\"zh-Hant\""}},
+        {"label": "Simplified Chinese", "set": {"DM_LANG": "\"zh-Hans\""}},
+        {"label": "Brazilian Portuguese", "set": {"DM_LANG": "\"pt-BR\""}}
+      ]
     },
     {
       "id": "DM_FULLSCREEN",
-      "label": "Display Mode",
-      "type": "choice",
-      "default": "0",
-      "options": [
-        { "value": "0", "label": "Window" },
-        { "value": "1", "label": "Fullscreen" }
-      ],
+      "label": "Display mode",
       "group": "Game",
-      "description": "Run in windowed or fullscreen mode"
+      "help": "Run in windowed or fullscreen mode",
+      "defaults": {
+        "DM_FULLSCREEN": "\"0\""
+      },
+      "choices": [
+        {"label": "Window", "set": {"DM_FULLSCREEN": "\"0\""}},
+        {"label": "Fullscreen", "set": {"DM_FULLSCREEN": "\"1\""}}
+      ]
+    },
+    {
+      "id": "DM_PRESENT_FILL",
+      "label": "Screen fill",
+      "group": "Game",
+      "help": "Keep the original aspect ratio or stretch to fill the window.",
+      "defaults": {
+        "DM_PRESENT_FILL": "\"fit\""
+      },
+      "choices": [
+        {"label": "Keep aspect ratio", "set": {"DM_PRESENT_FILL": "\"fit\""}},
+        {"label": "Fill screen", "set": {"DM_PRESENT_FILL": "\"stretch\""}}
+      ]
+    },
+    {
+      "id": "DM_PAD_LAYOUT",
+      "label": "Button layout",
+      "group": "Controls",
+      "help": "Match the Switch button positions or use Xbox button labels.",
+      "defaults": {
+        "DM_PAD_LAYOUT": "\"position\""
+      },
+      "choices": [
+        {"label": "Switch positions", "set": {"DM_PAD_LAYOUT": "\"position\""}},
+        {"label": "Xbox labels", "set": {"DM_PAD_LAYOUT": "\"xbox\""}}
+      ]
     },
     {
       "id": "DM_RUMBLE",
-      "label": "Game Rumble",
-      "type": "choice",
-      "default": "1",
-      "options": [
-        { "value": "1", "label": "On" },
-        { "value": "0", "label": "Off" }
-      ],
+      "label": "Game rumble",
       "group": "Controls",
-      "description": "Enable controller rumble"
+      "help": "Enable controller rumble",
+      "defaults": {
+        "DM_RUMBLE": "\"1\""
+      },
+      "choices": [
+        {"label": "On", "set": {"DM_RUMBLE": "\"1\""}},
+        {"label": "Off", "set": {"DM_RUMBLE": "\"0\""}}
+      ]
     },
     {
       "id": "DM_RUMBLE_GAIN",
-      "label": "Rumble Strength",
-      "type": "slider",
-      "default": 1.0,
-      "min": 0.0,
-      "max": 3.0,
-      "step": 0.1,
+      "label": "Rumble strength",
       "group": "Controls",
-      "description": "Rumble intensity multiplier",
-      "when": { "DM_RUMBLE": "1" }
+      "help": "Rumble intensity multiplier",
+      "when": {
+        "DM_RUMBLE": "\"1\""
+      },
+      "defaults": {
+        "DM_RUMBLE_GAIN": "1.0"
+      },
+      "slider": {
+        "key": "DM_RUMBLE_GAIN",
+        "min": 0.0,
+        "max": 3.0,
+        "step": 0.1
+      }
     },
     {
       "id": "DM_RUMBLE_MIN",
-      "label": "Rumble Cutoff",
-      "type": "slider",
-      "default": 0.0,
-      "min": 0.0,
-      "max": 0.9,
-      "step": 0.05,
+      "label": "Rumble cutoff",
       "group": "Controls",
-      "description": "Minimum rumble threshold"
+      "help": "Minimum rumble threshold",
+      "defaults": {
+        "DM_RUMBLE_MIN": "0"
+      },
+      "slider": {
+        "key": "DM_RUMBLE_MIN",
+        "min": 0.0,
+        "max": 0.9,
+        "step": 0.05
+      }
     },
     {
       "id": "DM_PRESENT_SNAP",
-      "label": "Frame Buffering",
-      "type": "choice",
-      "default": "0",
-      "options": [
-        { "value": "1", "label": "On" },
-        { "value": "0", "label": "Off" }
-      ],
+      "label": "Frame buffering",
       "group": "Performance",
-      "description": "Up to one frame more display latency"
+      "help": "Up to one frame more display latency",
+      "defaults": {
+        "DM_PRESENT_SNAP": "\"0\""
+      },
+      "choices": [
+        {"label": "On", "set": {"DM_PRESENT_SNAP": "\"1\""}},
+        {"label": "Off", "set": {"DM_PRESENT_SNAP": "\"0\""}}
+      ]
     },
     {
       "id": "DM_PSO_MTL4",
-      "label": "Metal 4 Pipelines",
-      "type": "choice",
-      "default": "1",
-      "options": [
-        { "value": "1", "label": "On" },
-        { "value": "0", "label": "Off" }
-      ],
+      "label": "Metal 4 pipelines",
       "group": "Performance",
-      "description": "Keeps a pipeline archive; uses more memory"
+      "help": "Keeps a pipeline archive; uses more memory",
+      "defaults": {
+        "DM_PSO_MTL4": "\"1\""
+      },
+      "choices": [
+        {"label": "On", "set": {"DM_PSO_MTL4": "\"1\""}},
+        {"label": "Off", "set": {"DM_PSO_MTL4": "\"0\""}}
+      ]
     },
     {
       "id": "DM_PSO_PREBUILD",
-      "label": "Pipeline Prebuild",
-      "type": "choice",
-      "default": "1",
-      "options": [
-        { "value": "1", "label": "On" },
-        { "value": "0", "label": "Off" }
-      ],
+      "label": "Pipeline prebuild",
       "group": "Performance",
-      "description": "The first start waits a few minutes for it, once",
-      "when": { "DM_PSO_MTL4": "1" }
+      "help": "The first start waits a few minutes for it, once",
+      "when": {
+        "DM_PSO_MTL4": "\"1\""
+      },
+      "defaults": {
+        "DM_PSO_PREBUILD": "\"1\""
+      },
+      "choices": [
+        {"label": "On", "set": {"DM_PSO_PREBUILD": "\"1\""}},
+        {"label": "Off", "set": {"DM_PSO_PREBUILD": "\"0\""}}
+      ]
     },
     {
       "id": "DM_NVN_ENC_THREAD",
-      "label": "Encode Thread",
-      "type": "choice",
-      "default": "0",
-      "options": [
-        { "value": "1", "label": "On" },
-        { "value": "0", "label": "Off" }
-      ],
+      "label": "Encode thread",
       "group": "Performance",
-      "description": "Use separate encode thread"
+      "help": "Use separate encode thread",
+      "defaults": {
+        "DM_NVN_ENC_THREAD": "\"0\""
+      },
+      "choices": [
+        {"label": "On", "set": {"DM_NVN_ENC_THREAD": "\"1\""}},
+        {"label": "Off", "set": {"DM_NVN_ENC_THREAD": "\"0\""}}
+      ]
     },
     {
       "id": "DM_FPS_HOLD",
-      "label": "Hold Frames When Late",
-      "type": "choice",
-      "default": "on",
-      "options": [
-        { "value": "on", "label": "On" },
-        { "value": "off", "label": "Off" }
-      ],
+      "label": "Hold frames when late",
       "group": "Performance",
-      "description": "Hold frames when rendering is late"
+      "help": "Hold frames when rendering is late",
+      "defaults": {
+        "DM_FPS_HOLD": "\"on\""
+      },
+      "choices": [
+        {"label": "On", "set": {"DM_FPS_HOLD": "\"on\""}},
+        {"label": "Off", "set": {"DM_FPS_HOLD": "\"off\""}}
+      ]
     },
     {
       "id": "DM_METAL_HUD",
       "label": "Performance HUD",
-      "type": "choice",
-      "default": "0",
-      "options": [
-        { "value": "1", "label": "On" },
-        { "value": "0", "label": "Off" }
-      ],
       "group": "Performance",
-      "description": "Show Metal performance HUD"
-    }
-  ],
-  "games": [
-    {
-      "id": "ea-sports-fc-26",
-      "name": "EA SPORTS FC 26",
-      "title_id": "01004FF021942000",
-      "inputs": ["build-folder"],
-      "saves": "saves"
-    }
-  ],
-  "system": {
-    "macos": {
-      "min_version": "14.0",
-      "arch": "arm64",
-      "graphics": "metal"
-    }
-  },
-  "folders": {
-    "saves": {
-      "path": "~/Library/Application Support/nxnative/01004FF021942000",
-      "label": "Game Saves"
-    },
-    "logs": {
-      "path": "~/Library/Logs/nxnative",
-      "label": "Game Logs"
-    }
-  },
-  "exit_codes": {
-    "0": "ok",
-    "134": "controller_error",
-    "1": "error"
-  },
-  "mods": {
-    "sources": [
-      {
-        "name": "nxnative 120 FPS patch",
-        "url": "https://github.com/seedds/nxnative",
-        "loader": "nrm"
-      }
-    ]
-  },
-  "achievements": {
-    "platform": "recomplauncher",
-    "status": "unsupported",
-    "note": "Requires nxnative achievement API + RecompLauncher platform SDK. Switch version may have internal achievements but not exposed."
-  },
-  "dumps": {
-    "format": "nxnative-build",
-    "titleId": "01004FF021942000",
-    "name": "EA SPORTS FC 26",
-    "region": "World",
-    "version": "1.86.1233",
-    "buildId": "v1179648",
-    "notes": "Custom nxnative build directory structure. Verify by checking required files in build folder.",
-    "verification": {
-      "requiredFiles": [
-        "patched_v1179648/main.patched.bin",
-        "extract/v1179648/RomFS.img",
-        "shader/pkg/",
-        "font/nintendo_ext.ttf",
-        "tools/dmhost",
-        "app/launcher.json"
+      "help": "Show Metal performance HUD",
+      "defaults": {
+        "DM_METAL_HUD": "\"0\""
+      },
+      "choices": [
+        {"label": "On", "set": {"DM_METAL_HUD": "\"1\""}},
+        {"label": "Off", "set": {"DM_METAL_HUD": "\"0\""}}
       ]
     }
-  },
-  "controllers": {
-    "support": ["gamecontroller", "sdl"],
-    "default": "gamecontroller",
-    "note": "Uses Apple GameController.framework natively. SDL2 mapping supported for Steam/Proton compatibility."
-  },
-  "tags": ["sports", "football", "soccer", "ea-sports", "switch-recomp", "nxnative"],
-  "credits": [
-    { "name": "seedds", "role": "nxnative author", "url": "https://github.com/seedds/nxnative" },
-    { "name": "jhaizhou-ops", "role": "d2r-mobile (native execution approach)", "url": "https://github.com/jhaizhou-ops/d2r-mobile" }
   ]
 }

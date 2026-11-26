@@ -1,6 +1,6 @@
 # FC 26 Launcher for macOS
 
-[![RecompLauncher](https://img.shields.io/badge/RecompLauncher-supported-brightgreen?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTIgMkM2LjQ4IDIgMiA2LjQ4IDIgMTJzNC40OCAxMCAxMCAxMCAxMC00LjQ4IDEwLTEwUzE3LjUyIDIgMTIgMnptMCAxOGMtNC40MSAwLTgtMy41OS04LThzMy41OS04IDgtOCA4IDMuNTkgOCA4LTMuNTkgOC04IDh6bTAtMTRjLTMuMzEgMC02IDIuNjktNiA2czIuNjkgNiA2IDYgNi0yLjY5IDYtNi0yLjY5LTYtNnoiLz48L3N2Zz4=)](https://recomplauncher.com/game/ea-sports-fc-26)
+<a href="https://recomplauncher.com"><picture><source media="(prefers-color-scheme: dark)" srcset="https://recomplauncher.com/assets/press/launcher/badge-light.svg"><img alt="Get it on RecompLauncher" src="https://recomplauncher.com/assets/press/launcher/badge-dark.svg" height="48"></picture></a>
 
 A modern, native macOS launcher for **EA SPORTS FC 26** (Switch version recompiled to run natively on Apple Silicon).
 
@@ -8,13 +8,11 @@ Built on top of [nxnative](https://github.com/seedds/nxnative) by seedds.
 
 ## RecompLauncher Support
 
-This launcher includes full [RecompLauncher](https://recomplauncher.com) integration:
+To play through RecompLauncher on an Apple Silicon Mac, install the patched nxnative checkout and build tools in [Prepare your game](#prepare-your-game), steps 1 and 2. Use **Easy Setup** to select your base game (`.nsp` or `.xci`), your **1.86.1233** update (`v1179648`, `.nsp`), and your console's `prod.keys` through RecompLauncher's Shared Keys prompt. Select **Set Up** to verify the packages and build the Mac game. **Play** opens the game directly, with video and controller settings available on its RecompLauncher page.
 
-- **Easy Setup**: Select your build folder and launch
-- **Settings Panel**: All game settings exposed in the launcher UI
-- **Preparation & Verification**: Validates build folder and prepares game data with progress reporting
+The ZIP includes `recomplauncher.json` next to `FC 26 Launcher.app`. To test a local build, unzip it and select the containing folder in RecompLauncher's **Developer tools → Add a build**.
 
-The app bundle includes `recomplauncher.json` at `Contents/Resources/recomplauncher.json`.
+RecompLauncher keeps saves, settings, the prepared game and logs in the game's `recompdata` folder. Game logs are under `runtime-home/Library/Logs/nxnative`, and setup logs are under `cache/build/logs`. The standalone launcher uses nxnative's usual per-user save and log folders under `~/Library/Application Support/nxnative` and `~/Library/Logs/nxnative`.
 
 ## Features
 
@@ -51,11 +49,11 @@ The app bundle includes `recomplauncher.json` at `Contents/Resources/recomplaunc
 
 ### Download Release
 
-1. Download `FC.26.Launcher.v1.3.1.zip` under **Assets** on the [v1.3.1 release page](https://github.com/imnotsharingmyname/FC26Launcher/releases/tag/v1.3.1).
+1. Download `FC26Launcher-v1.4.0-macos-arm64.zip` under **Assets** on the [v1.4.0 release page](https://github.com/imnotsharingmyname/FC26Launcher/releases/tag/v1.4.0).
 2. Unzip it and drag `FC 26 Launcher.app` to Applications.
-3. Follow [Prepare your game](#prepare-your-game) before opening the launcher.
+3. For standalone play, follow [Prepare your game](#prepare-your-game) before opening the app.
 
-If macOS rejects the v1.3.1 bundle because of its signature, use [Build from Source](#build-from-source) to create a locally signed copy.
+The download is ad-hoc signed. If macOS asks for approval to open it, use **System Settings → Privacy & Security → Open Anyway**.
 
 ### Build from Source
 
@@ -67,6 +65,8 @@ open ".build/FC 26 Launcher.app"
 ```
 
 ## Prepare your game
+
+RecompLauncher uses an arm64 Python 3.12 or newer with the nxnative dependencies installed. If you use a virtual environment, create it at `~/nxnative/.venv` and install the dependencies there. You can also set `FC26_PYTHON` in the environment used to start RecompLauncher to point to another Python executable.
 
 1. On your own Switch, use a dumping tool such as [nxdumptool](https://github.com/DarkMatterCore/nxdumptool/tree/rewrite) to export the base game (`.nsp` or cartridge `.xci`) and the installed `v1179648` update (`.nsp`). Copy both to a folder on your Mac, such as `~/Games/FC26`. Keep other updates out of this folder so nxnative selects the supported version. Have your console's `prod.keys` available locally, for example at `~/keys/prod.keys`.
 2. Install the build tools and Python dependencies from the [pinned nxnative setup guide](https://github.com/seedds/nxnative/blob/65501fbb/README.md#build-from-the-command-line), using the following clone and patch commands. The [FC 26 source patch](https://github.com/imnotsharingmyname/nxnative-fc26-120fps#apply-it) adds the profile for this update and includes startup and controller fixes. Use `~/nxnative` as the checkout location for the **Build** button in launchers compiled from the current source. For an existing checkout of `65501fbb`, use that checkout and apply the patch once.
@@ -95,7 +95,7 @@ open ".build/FC 26 Launcher.app"
 
 1. Open FC 26 Launcher and click **Select Build Folder**. Choose the generated `01004FF021942000_build` directory.
 2. Use **Settings** to adjust frame rate, display mode, language, controls, or performance.
-3. Click **Launch**. The Terminal build above already packaged the game, so go straight to **Launch**. In the v1.3.1 download, use that Terminal command whenever you need to rebuild the game because the app's **Build** button still uses a developer-specific path.
+3. Click **Launch**. The Terminal build above already packaged the game, so go straight to **Launch**. Use the same Terminal command to rebuild from updated inputs.
 
 ## 120 FPS Mod Details
 
