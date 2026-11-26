@@ -3,6 +3,21 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 @main
+enum LauncherEntryPoint {
+    @MainActor
+    static func main() {
+        let arguments = Array(CommandLine.arguments.dropFirst())
+        switch arguments.first {
+        case "--prepare":
+            RecompIntegration.prepare(Array(arguments.dropFirst()))
+        case "--play":
+            RecompIntegration.play()
+        default:
+            FC26LauncherApp.main()
+        }
+    }
+}
+
 struct FC26LauncherApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
