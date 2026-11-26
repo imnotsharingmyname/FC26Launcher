@@ -14,6 +14,8 @@ final class BuildManager: ObservableObject {
 
     private let gameManager = GameManager.shared
     private let settingsManager = SettingsManager.shared
+    private let nxnativeRoot = FileManager.default.homeDirectoryForCurrentUser
+        .appendingPathComponent("nxnative", isDirectory: true)
 
     private init() {}
 
@@ -36,13 +38,23 @@ final class BuildManager: ObservableObject {
         buildLog = ""
         lastBuildResult = nil
 
+        let packScript = nxnativeRoot.appendingPathComponent("dm/mac/pack_app.py")
+        guard FileManager.default.isReadableFile(atPath: packScript.path) else {
+            let message = "nxnative is required to build the game. Set it up in ~/nxnative using the README. Expected \(packScript.path)."
+            buildStatus = "nxnative not found"
+            buildLog = message
+            lastBuildResult = .failure(error: message)
+            isBuilding = false
+            return
+        }
+
         // Apply 120fps patch if enabled
         if enable120FPS {
             await apply120FPSPatch()
         }
 
         // Run pack_app.py
-        await runPackApp()
+        await runPackApp(packScript: packScript)
     }
 
     private func apply120FPSPatch() async {
@@ -52,8 +64,6 @@ final class BuildManager: ObservableObject {
         let patchPath = gameManager.buildFolderURL?
             .deletingLastPathComponent() // Go up from build folder
             .appendingPathComponent("extras/source-changes/fc26-120fps-nxnative-65501fbb.patch")
-
-        let nxnativePath = URL(fileURLWithPath: "/Users/faycalelhandi/nxnative")
 
         guard let patch = patchPath, FileManager.default.fileExists(atPath: patch.path) else {
             buildLog += "⚠️ 120 FPS patch not found at \(patchPath?.path ?? "unknown")\n"
@@ -65,7 +75,7 @@ final class BuildManager: ObservableObject {
             let task = Process()
             task.executableURL = URL(fileURLWithPath: "/usr/bin/git")
             task.arguments = ["apply", patch.path]
-            task.currentDirectoryURL = nxnativePath
+            task.currentDirectoryURL = nxnativeRoot
 
             let pipe = Pipe()
             task.standardOutput = pipe
@@ -97,7 +107,7 @@ final class BuildManager: ObservableObject {
             let task = Process()
             task.executableURL = URL(fileURLWithPath: "/usr/bin/tar")
             task.arguments = ["xf", tar.path]
-            task.currentDirectoryURL = nxnativePath
+            task.currentDirectoryURL = nxnativeRoot
 
             let pipe = Pipe()
             task.standardOutput = pipe
@@ -113,7 +123,7 @@ final class BuildManager: ObservableObject {
         }
     }
 
-    private func runPackApp() async {
+    private func runPackApp(packScript: URL) async {
         buildStatus = "Building game app..."
         buildProgress = 0.2
 
@@ -168,12 +178,12 @@ final class BuildManager: ObservableObject {
         }
 
         buildLog += "\n=== Running pack_app.py ===\n"
-        buildLog += "Command: python3 \(nxnativePackAppPath()) \(args.joined(separator: " "))\n\n"
+        buildLog += "Command: python3 \(packScript.path) \(args.joined(separator: " "))\n\n"
 
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/usr/bin/python3")
-        task.arguments = [nxnativePackAppPath()] + args
-        task.currentDirectoryURL = URL(fileURLWithPath: "/Users/faycalelhandi/nxnative/dm/mac")
+        task.arguments = [packScript.path] + args
+        task.currentDirectoryURL = packScript.deletingLastPathComponent()
 
         let pipe = Pipe()
         task.standardOutput = pipe
@@ -232,10 +242,6 @@ final class BuildManager: ObservableObject {
         else if output.contains("step: icon") { buildProgress = 0.85 }
         else if output.contains("step: signing") { buildProgress = 0.95 }
         else if output.contains("app:") && output.contains(".app") { buildProgress = 1.0 }
-    }
-
-    private func nxnativePackAppPath() -> String {
-        return "/Users/faycalelhandi/nxnative/dm/mac/pack_app.py"
     }
 
     func cancelBuild() {

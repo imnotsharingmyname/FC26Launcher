@@ -659,7 +659,7 @@ struct AboutTabView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
 
-                    Link("View on GitHub", destination: URL(string: "https://github.com/yourusername/FC26Launcher")!)
+                    Link("View on GitHub", destination: URL(string: "https://github.com/imnotsharingmyname/FC26Launcher")!)
                         .font(.caption)
                 }
             }
